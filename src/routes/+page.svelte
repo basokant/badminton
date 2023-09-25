@@ -1,30 +1,56 @@
 <script lang="ts">
-  import { Input } from "$lib/components/ui/input";
-  import { Label } from "$lib/components/ui/label";
-  import * as RadioGroup from "$lib/components/ui/radio-group";
+  import Court from '$lib/components/Court.svelte';
+  import GameQueue from '$lib/components/GameQueue.svelte';
+  import GroupCreate from '$lib/components/GroupCreate.svelte';
+  import PlayerCreate from '$lib/components/PlayerCreate.svelte';
+  import Players from '$lib/components/Players.svelte';
+  import { Separator } from '$lib/components/ui/separator';
+  import gameQueueStore from '$lib/stores/game';
+  import { ListOrdered, PlusSquare, Swords, Users } from 'lucide-svelte';
 </script>
 
-<div class="px-10 py-7 flex flex-col gap-4">
-  <div>
-    <h1>Welcome to SvelteKit</h1>
-    <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<head>
+  <title>Badminton Drop In</title>
+</head>
+<div class="flex gap-5 min-w-screen min-h-screen max-h-screen p-5 py-7 justify-evenly">
+  <div class="flex flex-col gap-2">
+      <h2 class="text-xl font-bold flex gap-2 items-center">
+        <Swords />
+        Courts
+      </h2>
+    <div class="flex flex-col justify-between flex-grow">
+    {#each $gameQueueStore.courts as court, i}
+      <Court game={court} courtNum={i} />
+    {/each}
+    </div>
   </div>
-
-  <Input type="email" placeholder="email" class="max-w-xs" />
-
-  <RadioGroup.Root value="comfortable">
-    <div class="flex items-center space-x-2">
-      <RadioGroup.Item value="default" id="r1" />
-      <Label for="r1">Default</Label>
+  <Separator class="h-[92.9vh]" orientation="vertical" />
+  <div class="flex-grow space-y-5">
+    <div class="space-y-2">
+      <h2 class="text-xl font-bold flex gap-2 items-center">
+        <PlusSquare />
+        Create Badminton Game
+      </h2>
+      <GroupCreate />
     </div>
-    <div class="flex items-center space-x-2">
-      <RadioGroup.Item value="comfortable" id="r2" />
-      <Label for="r2">Comfortable</Label>
+    <Separator orientation="horizontal" />
+    <div class="flex gap-5 flex-grow">
+      <div class="space-y-3 flex-grow">
+        <h2 class="text-xl font-bold flex gap-2 items-center">
+          <ListOrdered />
+          Upcoming Badminton Games
+        </h2>
+        <GameQueue />
+      </div>
+      <Separator class="h-[78.5vh]" orientation="vertical" />
+      <div class="space-y-3 w-80 max-h-[69vh]">
+        <h2 class="text-xl font-bold flex gap-2 items-center">
+          <Users />
+          Players
+        </h2>
+        <PlayerCreate />
+        <Players />
+      </div>
     </div>
-    <div class="flex items-center space-x-2">
-      <RadioGroup.Item value="compact" id="r3" />
-      <Label for="r3">Compact</Label>
-    </div>
-    <RadioGroup.Input name="spacing" />
-  </RadioGroup.Root>
+  </div>
 </div>
