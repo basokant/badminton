@@ -14,6 +14,9 @@ dependencies:
   lucide-svelte:
     specifier: ^0.279.0
     version: 0.279.0(svelte@4.2.1)
+  svelte-local-storage-store:
+    specifier: ^0.6.0
+    version: 0.6.0(svelte@4.2.1)
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0
@@ -1985,6 +1988,15 @@ packages:
     dependencies:
       svelte: 4.2.1
     dev: true
+
+  /svelte-local-storage-store@0.6.0(svelte@4.2.1):
+    resolution: {integrity: sha512-UbCY/yT/YUadU5IX/gZkoRQnA+ebFZHKKQjlJvfWHnBj3CPe9sNn8ndxYz/xy4LUzGjuBLq8+wH5RYK54ba3wA==}
+    engines: {node: '>=0.14'}
+    peerDependencies:
+      svelte: ^3.48.0 || ^4.0.0
+    dependencies:
+      svelte: 4.2.1
+    dev: false
 
   /svelte-preprocess@5.0.4(postcss-load-config@4.0.1)(postcss@8.4.30)(svelte@4.2.1)(typescript@5.2.2):
     resolution: {integrity: sha512-ABia2QegosxOGsVlsSBJvoWeXy1wUKSfF7SWJdTjLAbx/Y3SrVevvvbFNQqrSJw89+lNSsM58SipmZJ5SRi5iw==}

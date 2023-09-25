@@ -1,5 +1,5 @@
 import type { Game, Group, Player } from '$lib/types';
-import { writable } from 'svelte/store';
+import { persisted } from 'svelte-local-storage-store';
 
 export type GameQueue = {
   courts: (Game | null)[];
@@ -26,7 +26,7 @@ export function createGameQueueStore(numCourts: number) {
     queue: []
   };
 
-  const { subscribe, update } = writable<GameQueue>(initialGameQueue);
+  const { subscribe, update } = persisted<GameQueue>('game-queue', initialGameQueue);
 
   function enqueueGroup(players: Player[]) {
     update((gameQueue) => {

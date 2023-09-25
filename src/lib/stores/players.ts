@@ -1,5 +1,5 @@
 import type { Player } from '$lib/types';
-import { writable } from 'svelte/store';
+import { persisted } from 'svelte-local-storage-store';
 
 export function createPlayer(id: number, name: string): Player {
   return {
@@ -12,7 +12,7 @@ export function createPlayersStore() {
   const players: Player[] = [];
   let id = 0;
 
-  const { subscribe, update } = writable<Player[]>(players);
+  const { subscribe, update } = persisted<Player[]>('players', players);
 
   function addPlayer(name: string) {
     update((players) => {
