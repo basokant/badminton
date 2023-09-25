@@ -69,11 +69,11 @@ export function createGameQueueStore(numCourts: number) {
       // 3. Complete team
       // 4. Able to be paired with lower team(s) within 10
 
-      if (gameQueue.queue.length <= 1) {
+      if (gameQueue.queue.length < 1) {
         throw new Error('Queue is empty, please try again.');
       }
 
-      const nextGroup = gameQueue.queue.pop();
+      const nextGroup = gameQueue.queue.shift();
 
       if (nextGroup && nextGroup?.players.length === 4) {
         const nextGame = createGame(nextGroup.players);
