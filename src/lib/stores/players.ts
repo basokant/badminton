@@ -1,4 +1,5 @@
 import type { Player } from '$lib/types';
+import { faker } from '@faker-js/faker';
 import { writable } from 'svelte/store';
 
 export function createPlayer(id: number, name: string): Player {
@@ -9,24 +10,24 @@ export function createPlayer(id: number, name: string): Player {
 }
 
 export function createPlayersStore() {
-  const playerSet = new Set<Player>();
+  const players: Player[] = [];
   let id = 0;
 
-  const { subscribe, update } = writable<Set<Player>>(playerSet);
+  const { subscribe, update } = writable<Player[]>(players);
 
   function addPlayer(name: string) {
-    update((playerSet) => {
+    update((players) => {
       const player = createPlayer(id++, name);
-      playerSet.add(player);
+      players.unshift(player);
 
-      return playerSet;
+      return players;
     });
   }
 
   function removePlayer(player: Player) {
-    update((playerSet) => {
-      playerSet.delete(player);
-      return playerSet;
+    update((players) => {
+      players = players.filter((pl) => pl.id !== player.id);
+      return players;
     });
   }
 
@@ -38,4 +39,10 @@ export function createPlayersStore() {
 }
 
 const playersStore = createPlayersStore();
+
+const playerNames = [...Array(20)].map(() => faker.person.firstName());
+playerNames.map((name) => {
+  playersStore.addPlayer(name);
+});
+
 export default playersStore;
