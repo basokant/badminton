@@ -21,7 +21,7 @@
     <Select.Content class="max-h-[300px] overflow-scroll">
       <Select.Group>
         <Select.Label>Players</Select.Label>
-        {#each $playersStore as player}
+        {#each [...$playersStore].sort((a, b) => a.name.localeCompare(b.name)) as player}
           <Select.Item 
             value={player.id}
             label={player.name}
