@@ -20,7 +20,7 @@
     </Select.Trigger>
     <Select.Content class="max-h-[300px] overflow-scroll">
       <Select.Group>
-        <Select.Label>Players</Select.Label>
+        <Select.Label class="px-1">Players</Select.Label>
         {#each [...$playersStore].sort((a, b) => a.name.localeCompare(b.name)) as player}
           <Select.Item 
             value={player.id}
@@ -29,6 +29,9 @@
             {player.name}
           </Select.Item>
         {/each}
+        {#if $playersStore.length === 0}
+          <span class="px-1 text-sm">No players</span>
+        {/if}
       </Select.Group>
     </Select.Content>
     <Select.Input name={inputName} />
