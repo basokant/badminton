@@ -1,5 +1,4 @@
 import type { Player } from '$lib/types';
-import { faker } from '@faker-js/faker';
 import { writable } from 'svelte/store';
 
 export function createPlayer(id: number, name: string): Player {
@@ -40,9 +39,10 @@ export function createPlayersStore() {
 
 const playersStore = createPlayersStore();
 
-const playerNames = [...Array(20)].map(() => faker.person.firstName());
-playerNames.map((name) => {
-  playersStore.addPlayer(name);
-});
+// TODO: Make this populate if dev env var is set
+// const playerNames = [...Array(20)].map(() => faker.person.firstName());
+// playerNames.map((name) => {
+//   playersStore.addPlayer(name);
+// });
 
 export default playersStore;
