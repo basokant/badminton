@@ -18,7 +18,7 @@
         <Swords />
         Courts
       </h2>
-    <div class="flex flex-col justify-between flex-grow">
+    <div class="flex flex-col justify-between flex-grow gap-2">
     {#each $gameQueueStore.courts as court, i}
       <Court game={court} courtNum={i} />
     {/each}

@@ -93,5 +93,5 @@ export function createGameQueueStore(numCourts: number) {
   };
 }
 
-const gameQueueStore = createGameQueueStore(4);
+const gameQueueStore = createGameQueueStore(6);
 export default gameQueueStore;

@@ -10,7 +10,7 @@
 <Tooltip.Root open={true} openDelay={0} closeOnEscape={false} closeOnPointerDown={false}>
     <Tooltip.Trigger asChild let:builder>
         <Button builders={[builder]} variant="outline" class="bg-transparent focus:bg-transparent hover:bg-transition border-0">
-            <Avatar.Root>
+            <Avatar.Root class="w-7 h-7">
                 <Avatar.Fallback>{player.name.charAt(0)}</Avatar.Fallback>
             </Avatar.Root>
         </Button>
