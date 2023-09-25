@@ -24,7 +24,7 @@
     };
 </script>
 
-<form class="flex gap-4" on:submit|preventDefault={() => {
+<form class="flex flex-col items-start xl:flex-row gap-4" on:submit|preventDefault={() => {
     const parsedPlayers = playersSchema.parse(players);
     gameQueueStore.enqueueGroup(parsedPlayers);
     players.map(() => null);
@@ -33,8 +33,10 @@
         gameQueueStore.addNewGame(emptyCourt);
     }
 }}>
+    <div class="grid grid-cols-2 xl:grid-cols-4 gap-4">
     {#each Array(4) as _, i}
         <PlayerSelect inputName={`player${i}`} onPlayerChange={(player) => { players[i] = player }}/>
     {/each}
+    </div>
     <Button type="submit" disabled={!isValid}>Add Group</Button>
 </form>

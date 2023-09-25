@@ -15,7 +15,7 @@
 </script>
 
 <Select.Root onSelectedChange={handleSelectedChange}>
-    <Select.Trigger class="w-[220px]">
+    <Select.Trigger class="w-[180px] 2xl:w-[220px]">
       <Select.Value placeholder="Select a player" />
     </Select.Trigger>
     <Select.Content class="max-h-[300px] overflow-scroll">
