@@ -3,7 +3,7 @@
   import GroupCard from './GroupCard.svelte';
 </script>
 
-<div class="grid grid-cols-1 gap-2 max-h-[73vh] overflow-scroll">
+<div class="grid grid-cols-1 gap-2 max-h-[73vh] overflow-auto">
   {#each $gameQueueStore.queue as group, i}
     <GroupCard group={group} groupNum={i} removeGroup={() => gameQueueStore.removeGroup(i)} />
   {/each}

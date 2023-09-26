@@ -13,7 +13,8 @@
 </script>
 
 
-<div class="flex flex-col items-center justify-center gap-1 border-border rounded-md border-[1px] w-80 flex-1 text-border">
+<div class="relative flex flex-col items-center justify-center gap-1 border-border rounded-md border-[1px] w-80 flex-1 text-border">
+    <span class="absolute left-2 top-2">{ courtNum + 1 }</span>
     {#if game}
         {@const players = game.players}
             <div class="flex gap-6 dark items-center">

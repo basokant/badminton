@@ -10,7 +10,7 @@
     }
 </script>
 
-<div class="grid grid-cols-1 max-h-full overflow-scroll">
+<div class="grid grid-cols-1 max-h-full overflow-auto">
   {#each $playersStore as player, i (i)}
     <div class="flex items-center group gap-3">
         <p transition:slide={{ duration: 200 }}>{player.name}</p>
